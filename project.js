@@ -53,5 +53,8 @@ function deleteFilm(e){
 
     if(e.target.id == "delete-film"){
         ui.deleteFilmFromUI(e.target);
-    }
+        storage.deleteFilmFromStorage(e.target.parentElement.previousElementSibling.previousElementSibling.textContent); 
+
+        ui.displayMessages("Delete operatin was successfull...","success");
+     }
 }
