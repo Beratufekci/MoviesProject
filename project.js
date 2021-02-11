@@ -5,11 +5,6 @@ const urlElement = document.querySelector("#url");
 const secondCardBody = document.querySelectorAll(".card-body")[1];
 const clear = document.querySelector("#clear-films");
 
-//Starting UI Object
-const ui = new UI();
-
-//produce storage object
-const storage = new Storage();
 
 //Loading all events
 eventListeners(); 
@@ -17,8 +12,8 @@ eventListeners();
 function eventListeners(){
     form.addEventListener("submit",addFilm);
     document.addEventListener("DOMContentLoaded",function(){
-        let films = storage.getFilmsFromStorage();
-        ui.loadAllFilms(films);
+        let films = Storage.getFilmsFromStorage();
+        UI.loadAllFilms(films);
     });
 
     secondCardBody.addEventListener("click",deleteFilm);
@@ -33,7 +28,7 @@ function addFilm(e){
 
     if(title === "" | director ==="" | url ===""){
         //Error
-        ui.displayMessages("Fill all blanks...","danger");
+        UI.displayMessages("Fill all blanks...","danger");
 
     }
     else{
@@ -41,30 +36,30 @@ function addFilm(e){
         const newFilm = new Film(title,director,url);
 
         //Adding movie to ui
-        ui.addFilmToUI(newFilm);
-        storage.addFilmToStorage(newFilm);
-        ui.displayMessages("Movie has been added successfully...","success");
+        UI.addFilmToUI(newFilm);
+        Storage.addFilmToStorage(newFilm);
+        UI.displayMessages("Movie has been added successfully...","success");
     }
 
 
-    ui.clearInputs(titleElement,directorElement,urlElement);
+    UI.clearInputs(titleElement,directorElement,urlElement);
     e.preventDefault();
 }
 
 function deleteFilm(e){
 
     if(e.target.id == "delete-film"){
-        ui.deleteFilmFromUI(e.target);
-        storage.deleteFilmFromStorage(e.target.parentElement.previousElementSibling.previousElementSibling.textContent); 
+        UI.deleteFilmFromUI(e.target);
+        Storage.deleteFilmFromStorage(e.target.parentElement.previousElementSibling.previousElementSibling.textContent); 
 
-        ui.displayMessages("Delete operatin was successfull...","success");
+        UI.displayMessages("Delete operatin was successfull...","success");
      }
 }
 
 function clearAllFilms(){
 
     if(confirm("Are you sure?")){
-       ui.clearAllFilmsFromUI();
-       storage.clearAllFilmsFromStorage();
+       UI.clearAllFilmsFromUI();
+       Storage.clearAllFilmsFromStorage();
     }
 }

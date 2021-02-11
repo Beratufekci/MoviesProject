@@ -1,8 +1,7 @@
-function Storage(){
+class Storage{
 
-}
-
-Storage.prototype.addFilmToStorage = function(newFilm){
+    
+static addFilmToStorage(newFilm){
 
     let films = this.getFilmsFromStorage();
 
@@ -12,7 +11,7 @@ Storage.prototype.addFilmToStorage = function(newFilm){
 
 }
 
-Storage.prototype.getFilmsFromStorage = function(){
+static getFilmsFromStorage(){
 
     let films;
 
@@ -26,7 +25,7 @@ Storage.prototype.getFilmsFromStorage = function(){
     return films;
 }
 
-Storage.prototype.deleteFilmFromStorage = function(filmTitle){
+static deleteFilmFromStorage(filmTitle){
 
     let films = this.getFilmsFromStorage();
 
@@ -41,7 +40,10 @@ Storage.prototype.deleteFilmFromStorage = function(filmTitle){
 
 }
 
-Storage.prototype.clearAllFilmsFromStorage = function(){
+static clearAllFilmsFromStorage(){
 
     localStorage.removeItem("films");
+}
+
+
 }
