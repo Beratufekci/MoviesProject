@@ -3,6 +3,7 @@ const titleElement = document.querySelector("#title");
 const directorElement = document.querySelector("#director");
 const urlElement = document.querySelector("#url");
 const secondCardBody = document.querySelectorAll(".card-body")[1];
+const clear = document.querySelector("#clear-films");
 
 //Starting UI Object
 const ui = new UI();
@@ -21,6 +22,7 @@ function eventListeners(){
     });
 
     secondCardBody.addEventListener("click",deleteFilm);
+    clear.addEventListener("click",clearAllFilms);
 }
 
 function addFilm(e){
@@ -57,4 +59,12 @@ function deleteFilm(e){
 
         ui.displayMessages("Delete operatin was successfull...","success");
      }
+}
+
+function clearAllFilms(){
+
+    if(confirm("Are you sure?")){
+       ui.clearAllFilmsFromUI();
+       storage.clearAllFilmsFromStorage();
+    }
 }
