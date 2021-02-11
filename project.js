@@ -6,8 +6,11 @@ const urlElement = document.querySelector("#url");
 //Starting UI Object
 const ui = new UI();
 
+//produce storage object
+const storage = new Storage();
+
 //Loading all events
-eventListeners();
+eventListeners(); 
 
 function eventListeners(){
     form.addEventListener("submit",addFilm);
@@ -30,6 +33,7 @@ function addFilm(e){
 
         //Adding movie to ui
         ui.addFilmToUI(newFilm);
+        storage.addFilmToStorage(newFilm);
         ui.displayMessages("Movie has been added successfully...","success");
     }
 
